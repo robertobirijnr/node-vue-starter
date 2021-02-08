@@ -18,6 +18,22 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+    'gold-darkest': '#3E2D13',
+    'gold-darker': '#7C5B25',
+    'gold-dark': '#B98838',
+    gold: '#CE973E',
+    'gold-light': '#DDB678',
+    'gold-lighter': '#EBD5B2',
+    'gold-lightest': '#FAF5EC',
+
+    'brown-darkest': '#262626',
+    'brown-darker': '#4D4D4D',
+    'brown-dark': '#737373',
+    brown: '#808080',
+    'brown-light': '#A6A6A6',
+    'brown-lighter': '#CCCCCC',
+    'brown-lightest': '#F2F2F2',
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -29,6 +45,19 @@ module.exports = {
         800: '#2d3748',
         900: '#1a202c',
       },
+
+      emerald:{
+        100: '#6ABFC3',
+        200: '#20393B',
+        300: '#407375',
+        400: '#5FACB0',
+        500: '#97D2D5',
+        600: '#C3E5E7',
+        700: '#F0F9F9'
+      },
+     
+
+
       red: {
         100: '#fff5f5',
         200: '#fed7d7',
@@ -248,6 +277,7 @@ module.exports = {
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      'primary':['Merriweather']
     },
     fontSize: {
       xs: '0.75rem',
@@ -272,12 +302,26 @@ module.exports = {
       extrabold: '800',
       black: '900',
     },
-    height: theme => ({
+    height:{
       auto: 'auto',
-      ...theme('spacing'),
+       px: '1px',
+      '1': '0.25rem',
+      '2': '0.5rem',
+      '3': '0.75rem',
+      '4': '1rem',
+      '5': '1.25rem',
+      '6': '1.5rem',
+      '8': '2rem',
+      '10': '2.5rem',
+      '12': '3rem',
+      '16': '4rem',
+      '24': '6rem',
+      '32': '8rem',
+      '48': '12rem',
+      '64': '16rem',
       full: '100%',
       screen: '100vh',
-    }),
+    },
     inset: {
       '0': '0',
       auto: 'auto',
@@ -311,11 +355,24 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    margin: (theme, { negative }) => ({
+    margin: {
       auto: 'auto',
-      ...theme('spacing'),
-      ...negative(theme('spacing')),
-    }),
+      px: '1px',
+      '0': '0',
+      '1': '0.25rem',
+      '2': '0.5rem',
+      '3': '0.75rem',
+      '4': '1rem',
+      '5': '1.25rem',
+      '6': '1.5rem',
+      '8': '2rem',
+      '10': '2.5rem',
+      '12': '3rem',
+      '16': '4rem',
+      '20': '5rem',
+      '24': '6rem',
+      '32': '8rem'
+  },
     maxHeight: {
       full: '100%',
       screen: '100vh',
@@ -379,7 +436,23 @@ module.exports = {
       '11': '11',
       '12': '12',
     },
-    padding: theme => theme('spacing'),
+    padding: {
+      px: '1px',
+      '0': '0',
+      '1': '0.25rem',
+      '2': '0.5rem',
+      '3': '0.75rem',
+      '4': '1rem',
+      '5': '1.25rem',
+      '6': '1.5rem',
+      '8': '2rem',
+      '10': '2.5rem',
+      '12': '3rem',
+      '16': '4rem',
+      '20': '5rem',
+      '24': '6rem',
+      '32': '8rem'
+  },
     placeholderColor: theme => theme('colors'),
     placeholderOpacity: theme => theme('opacity'),
     space: (theme, { negative }) => ({
