@@ -8,7 +8,7 @@
                :error="errors.first('name')"
                name="name"
                type="text"
-               v-validate="'required'"
+               v-validate="'required|min:6'"
                :value="form.name"
                v-model="form.name"
                placeholder="Enter name"/>
@@ -59,7 +59,12 @@ import TextInput from '../components/TextInput.vue'
                      return
                  }
                  this.$store.dispatch('registerUser',this.form)
-                 .then(()=>{})
+                 .then(()=>{
+                     this.$router.push('/')
+                 })
+                 .catch(err =>{
+                     console.log(err)
+                 })
              }) 
           }
       }
