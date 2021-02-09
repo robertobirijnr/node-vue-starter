@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const randomString = require('randomstring')
+const Mail = require("@fullstackjs/mail")
 
 
 const userSchema = new mongoose.Schema({
@@ -13,11 +14,28 @@ const userSchema = new mongoose.Schema({
     emailConfirmCode:String
 });
 
+//harshing user password
 userSchema.pre('save',function(){
     this.password = bcrypt.hashSync(this.password)
     this.emailConfirmCode = randomString.generate(72)
 
     this.createdAt = new Date
+})
+
+//sending email confirmation to user
+userSchema.post('save', async function(){
+ await new Mail('confirm-account')
+    .to(this.email, this.name)
+
+    .subject('Please confirm your account')
+
+    .data({
+        name:this.name,
+        url: `${process.env.APP_URI}/user/emails/confirm/${this.emailConfirmCode}`
+    })
+
+    .send()
+
 })
 
 module.exports = mongoose.model('user',userSchema)
