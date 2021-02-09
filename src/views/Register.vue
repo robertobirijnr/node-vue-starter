@@ -59,13 +59,7 @@ import TextInput from '../components/TextInput.vue'
                      return
                  }
                  this.$store.dispatch('registerUser',this.form)
-                 .then(()=>{
-                form:{
-                  name="",
-                  email="",
-                  password=""
-              }
-                 })
+                 .then(()=>{})
              }) 
           }
       }

@@ -10,7 +10,7 @@ export const getters = {
 
 export const actions ={
   registerUser({commit},data){
-      axiosInstance.post('auth/register',data)
+      axiosInstance.post('user/register',data)
       .then(res =>{
         commit('Register_USER',res.data)
       })
