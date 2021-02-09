@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const randomString = require('randomstring')
 const Mail = require("@fullstackjs/mail")
+const jwt = require('jsonwebtoken')
 
 
 const userSchema = new mongoose.Schema({
@@ -37,5 +38,9 @@ userSchema.post('save', async function(){
     .send()
 
 })
+
+userSchema.methods.generateToken = function(){
+    return jwt.sign({id: this._id},process.env.JWT_SECRETE )
+}
 
 module.exports = mongoose.model('user',userSchema)
