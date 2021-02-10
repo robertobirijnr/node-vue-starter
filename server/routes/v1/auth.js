@@ -18,7 +18,10 @@ router
 router
     .route('/login')
     .post(userController.login)
-      
+ 
+router
+    .route('/forgotpassword') 
+    .post(userController.forgotPassword)   
 
 
 

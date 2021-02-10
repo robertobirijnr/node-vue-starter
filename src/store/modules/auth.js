@@ -1,4 +1,5 @@
 import axiosInstance from '@/utils/axiosInstance'
+import { rejectError } from '@/utils/helpers'
 
 
 const user = JSON.parse(localStorage.getItem('auth'));
@@ -7,7 +8,8 @@ const initialState = user
   : { status: { loggedIn: false }, user: null };
 
 export const state = {
-  initialState
+  initialState,
+  error:''
 }
 
 export const getters = {
@@ -21,27 +23,28 @@ authUser(state){
 
 export const actions ={
   registerUser({commit},data){
-      axiosInstance.post('user/register',data)
+     return axiosInstance.post('user/register',data)
       .then(res =>{
         const user = res.data
         localStorage.setItem('auth', JSON.stringify(user))
         commit('Register_USER',user)
 
       })
+      .catch(err => rejectError(err))
   },
+
   loginUser({commit},userData){
-    axiosInstance.post('user/login',userData)
-    .then(res=>{
-      const user = res.data
-      localStorage.setItem('auth', JSON.stringify(user))
-      commit('Register_USER', user)
-    })
+    return axiosInstance.post('user/login',userData)  
   },
+
   logout({commit}){
         localStorage.removeItem('auth')
         commit('setAuthuser',null)
          
 },
+forgotPassword({commit},userData){
+  return axiosInstance.post('user/forgotpassword',userData)
+}
 }
 
 export const mutations = {
@@ -53,5 +56,8 @@ export const mutations = {
             state.initialState.status.loggedIn = false,
             state.initialState.user = user
    },
+   error(state, data) {
+    return state.error = data
+},
 
 }
