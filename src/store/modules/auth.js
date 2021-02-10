@@ -42,9 +42,13 @@ export const actions ={
         commit('setAuthuser',null)
          
 },
-forgotPassword({commit},userData){
-  return axiosInstance.post('user/forgotpassword',userData)
-}
+
+  forgotPassword({commit},userData){
+    return axiosInstance.post('user/forgotpassword',userData)
+  },
+  resetPassword({commit},userData){
+    return axiosInstance.post('user/password/reset',userData)
+  }
 }
 
 export const mutations = {

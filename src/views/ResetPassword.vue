@@ -39,9 +39,9 @@ import TextInput from '../components/TextInput.vue'
                  if(!isValid){
                      return
                  }
-                 this.$store.dispatch('post_reset_password',{
+                 this.$store.dispatch('resetPassword',{
                      ...this.form,
-                     token:this.$router.params.token
+                     token:this.$route.params.token
                  })
                  .then(res=>{
                       this.$router.push('/')  

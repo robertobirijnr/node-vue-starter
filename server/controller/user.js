@@ -1,4 +1,6 @@
 const User = require("../models/user")
+const bcrypt = require('bcryptjs')
+const passwordReset = require("../models/passwordReset")
 
 
 exports.login = async(req,res)=>{
@@ -55,5 +57,24 @@ exports.forgotPassword = async (req,res)=>{
         .status(200)
         .json({
         message:'password reset link sent'
+    })
+}
+
+exports.resetPassword = async (req,res)=>{
+    // const {users} = req
+    await User.findOneAndUpdate({
+          email: req.body.email
+    },
+    {
+        password: bcrypt.hashSync(req.body.password)
+    }
+    )
+
+    await passwordReset.findOneAndDelete({
+        email:req.body.email
+    })
+
+    return res.json({
+        message:'Password reset successfully'
     })
 }
