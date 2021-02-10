@@ -80,7 +80,7 @@ userSchema.methods.generatePasswordReset = async function(){
         .to(this.email, this.name)
         .subject('password reset')
         .data({
-            url: `${process.env.APP_URI}/user/forgotpassword/reset/${token}`,
+            url: `${process.env.APP_URI}/auth/forgotpassword/reset/${token}`,
             name:this.name
         })
         .send()
